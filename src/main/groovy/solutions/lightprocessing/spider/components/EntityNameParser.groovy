@@ -16,4 +16,13 @@ class EntityNameParser {
                 .with { it.plus(0, prefix) }
                 .join('_')
     }
+
+    String getEntityNameByTableName(String tableName) {
+        tableName.split('_')
+                .tail()
+                .collect { it.toLowerCase() }
+                .collect { it.capitalize() }
+                .join('')
+                .uncapitalize()
+    }
 }
