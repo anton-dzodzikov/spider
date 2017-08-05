@@ -8,5 +8,6 @@ import solutions.lightprocessing.spider.api.DataController
 class JerseyConfiguration extends ResourceConfig {
     JerseyConfiguration() {
         register(DataController.class)
+        register(ExceptionHandler.class)
     }
 }
