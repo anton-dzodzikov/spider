@@ -13,8 +13,14 @@ class DataService {
     @Autowired
     EntityNameParser nameParser
 
-    // TODO: First we should check if table for such entity exists (via tables API)
+    @Autowired
+    EntityLocator entityLocator
+
     List<Map> getAll(String entityName) {
+        if (!entityLocator.availableEntities.contains(entityName)) {
+            throw new IllegalArgumentException("No such exposed entity: \"${entityName}\"")
+        }
+
         nameParser.getTableName(entityName)
                 .with { "select * from ${it}" }
                 .with { jdbcTemplate.queryForList(it) }
