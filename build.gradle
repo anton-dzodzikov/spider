@@ -1,0 +1,22 @@
+buildscript {
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE')
+    }
+}
+
+group 'solutions.lightprocessing'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.10'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.3.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-jersey:1.5.3.RELEASE'
+    compile 'org.postgresql:postgresql:9.4-1206-jdbc42'
+}
+
+processResources {
+    expand(project.properties)
+}
