@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Service
 import solutions.lightprocessing.spider.components.EntityNameParser
+import solutions.lightprocessing.spider.domain.Filter
 
 @Service
 class DataService {
@@ -16,7 +17,7 @@ class DataService {
     @Autowired
     EntityLocator entityLocator
 
-    List<Map> getAll(String entityName) {
+    List<Map> getAll(String entityName, List<Filter> filters) {
         if (!entityLocator.availableEntities.contains(entityName)) {
             throw new IllegalArgumentException("No such exposed entity: \"${entityName}\"")
         }
